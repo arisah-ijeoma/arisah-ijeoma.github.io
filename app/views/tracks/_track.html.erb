@@ -4,7 +4,7 @@
     <td><%= track.audio_file_name %></td>
     <td>
       <audio id="<%= track.id %>" controls>
-        <source src="<%= stream_path(track) %>"></source>
+        <source src="<%= stream_path(track) %>">
       </audio>
 
       <%= link_to 'Download', audio_download_path(track), method: :get %>

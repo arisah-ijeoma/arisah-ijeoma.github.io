@@ -1,5 +1,3 @@
-SimpleCov.start
-
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'spec_helper'
@@ -24,16 +22,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.after :each do
-    Warden.test_reset!
-  end
-
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
-  config.include Warden::Test::Helpers
-  config.before :suite do
-    Warden.test_mode!
-  end
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -56,10 +46,7 @@ RSpec.configure do |config|
   end
 
   config.infer_spec_type_from_file_location!
-  config.include FeatureHelper, type: :feature
   config.include FactoryGirl::Syntax::Methods
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
 
   Capybara.configure do |config|
     config.match = :prefer_exact
