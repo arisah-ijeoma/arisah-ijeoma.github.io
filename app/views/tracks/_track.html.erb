@@ -1,0 +1,14 @@
+<%= content_tag_for :tr, track do %>
+    <td><%= track.artiste %></td>
+    <td><%= track.title %></td>
+    <td><%= track.audio_file_name %></td>
+    <td>
+      <audio id="<%= track.id %>" controls>
+        <source src="<%= stream_path(track) %>"></source>
+      </audio>
+
+      <%= link_to 'Download', audio_download_path(track), method: :get %>
+      <%= link_to 'Edit', edit_track_path(track) %>
+      <%= link_to 'Delete', track, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+<% end %>
