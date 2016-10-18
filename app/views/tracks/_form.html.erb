@@ -1,0 +1,32 @@
+<% if @track.new_record? %>
+    New Item
+<% else %>
+    Edit Item
+<% end %>
+
+<%= form_for @track do |f| %>
+
+    <% @track.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+    <% end %>
+<%# end %>
+
+    <p>
+      <%= f.label :artiste %>
+    <p><%= f.text_field :artiste %></p>
+    </p>
+
+    <p>
+      <%= f.label :title %>
+      <p><%= f.text_field :title %></p>
+    </p>
+
+    <p>
+      <%= f.label :audio %>
+      <p><%= f.file_field :audio %></p>
+    </p>
+
+    <%= f.submit "Save", button_html: {data: {disable_with: 'Please wait...'}} %>
+<% end %>

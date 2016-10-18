@@ -1,0 +1,21 @@
+<h3>Tracks</h3>
+<p><%= link_to 'Create a New Track', new_track_path %></p>
+
+<% if @tracks.present? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Artiste</th>
+          <th>Title</th>
+          <th>Audio</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render @tracks %>
+      </tbody>
+    </table>
+<% else %>
+    <em>There are no tracks available</em>
+<% end %>
