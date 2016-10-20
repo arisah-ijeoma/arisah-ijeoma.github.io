@@ -40,15 +40,9 @@ class TracksController < ApplicationController
     end
   end
 
-  def stream
-    if @track
-      send_file path_to_track
-    end
-  end
-
   def path_to_track
     file_path = @track.audio_file_name
-    "#{Rails.root}/public/system/tracks/audios/000/000/00#{@track.id}/original/#{file_path}"
+    send_file "#{Rails.root}/public/system/tracks/audios/000/000/00#{@track.id}/original/#{file_path}"
   end
 
   def destroy
